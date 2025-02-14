@@ -3,12 +3,13 @@ public class EmptyCell extends Cell{
         super();
     }
     
-    public EmptyCell(int w, int h) {
-        super(w, h);
+    public EmptyCell(int x, int y) {
+        super(x, y);
     }
     
+    @Override
     public String toString() {
-        return "";
+        return " ";
     }
 
 }

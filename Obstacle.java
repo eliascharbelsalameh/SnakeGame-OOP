@@ -7,6 +7,7 @@ public class Obstacle extends Cell{
         super(x, y);
     }
     
+    @Override
     public String toString() {
         return "O";
     }

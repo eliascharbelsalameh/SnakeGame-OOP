@@ -7,6 +7,7 @@ public class Food extends Cell{
         super(x, y);
     }
     
+    @Override
     public String toString() {
         return "F";
     }

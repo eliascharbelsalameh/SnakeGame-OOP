@@ -7,6 +7,7 @@ public class SnakeBodyCell extends Cell{
         super(x, y);
     }
     
+    @Override
     public String toString() {
         return "S";
     }

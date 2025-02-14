@@ -7,6 +7,7 @@ public class SnakeHead extends Cell{
         super(x, y);
     }
 
+    @Override
     public String toString() {
         return "H";
     }
