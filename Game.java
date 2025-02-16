@@ -1,5 +1,5 @@
 import java.util.List;
-
+import java.util.Scanner;
 public class Game {
     private int nbOfFood;
     private int nbOfObstacles;
@@ -8,6 +8,13 @@ public class Game {
     private List<Cell> activeItems;
     private char input;
 
+    public void setInput(char input) {
+        this.input = input;
+    }
+
+    public char getInput() {
+        return input;
+    }
 
     public Game(Map map, Snake snake) {
         this.nbOfFood = map.getHeight() * map.getWidth() / 10;
@@ -100,8 +107,13 @@ public class Game {
         }
     }
 
-    public void handleInput(char input) {
-        // add input - keypad functionality
+    public void handleInput() {
+        Scanner scanner = new Scanner(System.in);
+        do {
+            System.out.print("Enter direction (WASD): ");
+            input = scanner.next().charAt(0);
+        } while (input != Direction.UP && input != Direction.DOWN && input != Direction.LEFT && input != Direction.RIGHT);
+        setInput(input);
         }
     }
 
