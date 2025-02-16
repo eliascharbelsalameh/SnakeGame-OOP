@@ -34,6 +34,10 @@ public class Map {
         return grid[x][y].getClass() != EmptyCell.class;
     }
 
+    public String getCellType(int x, int y) {
+        return grid[x][y].getClass().getName();
+    }
+
     @Override
     public String toString() {
         for (int i = 0; i < width; i++) {
