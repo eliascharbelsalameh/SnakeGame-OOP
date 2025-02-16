@@ -3,12 +3,12 @@ public class Map {
     private final int width;
     private final Cell[][] grid;
     
-    public Map(int width, int height) {
+    public Map(int height, int width) {
         this.width = width;
         this.height = height;
         grid = new Cell[height][width];
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
                 grid[i][j] = new EmptyCell(i, j);
             }
         }
@@ -40,12 +40,20 @@ public class Map {
 
     @Override
     public String toString() {
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
-                System.out.print(grid[i][j]);
+        for (int i = height - 1; i >= 0; i--) {
+            for (int k = 0; k < width; k++) {
+                System.out.print("+---+");
+            }
+            System.out.println();
+            for (int j = 0; j < width; j++) {
+                System.out.print("| " + grid[i][j] + " |");
             }
             System.out.println();
         }
+        for (int i = 0; i < width; i++) {
+            System.out.print("+---+");
+        }
+        System.out.println();
         return "";
     }
 }
