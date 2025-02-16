@@ -27,4 +27,20 @@ public abstract class Cell {
     public void setY(int y) {
         this.y = y;
     }
+
+    public boolean checkOverlap(Cell cell) {
+        return this.x == cell.getX() && this.y == cell.getY();
+    }
+    
+    public boolean equals(Cell cell) {
+        if (cell == null) {
+            return false;
+        }
+        else if (cell.getClass() != this.getClass()) {
+            return false;
+        }
+        else {
+            return this.x == cell.getX() && this.y == cell.getY();
+        }
+    }
 }

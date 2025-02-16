@@ -9,7 +9,7 @@ public class SnakeBodyCell extends Cell{
     
     @Override
     public String toString() {
-        return "S";
+        return "s";
     }
     
 }

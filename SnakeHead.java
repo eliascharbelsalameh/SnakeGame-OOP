@@ -9,6 +9,6 @@ public class SnakeHead extends Cell{
 
     @Override
     public String toString() {
-        return "H";
+        return "S";
     }
 }
