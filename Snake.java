@@ -1,19 +1,19 @@
-import java.util.List;
+import java.util.ArrayList;
 
 public class Snake {
-    private List<Cell> body;
+    private ArrayList<Cell> body;
     private char direction;
 
-    public Snake(List<Cell> body, char direction) {
+    public Snake(ArrayList<Cell> body, char direction) {
         this.body = body;
         this.direction = direction;
     }
 
-    public List<Cell> getBody() {
+    public ArrayList<Cell> getBody() {
         return body;
     }
 
-    public void setBody(List<Cell> body) {
+    public void setBody(ArrayList<Cell> body) {
         this.body = body;
     }
 
@@ -48,8 +48,7 @@ public class Snake {
             default:
                 break;
             }
-            body.remove(1);
-            body.add(1,new SnakeBodyCell(x, y));
+            body.set(1, new SnakeBodyCell(x, y));
             body.remove(body.size() - 1);
     }
     public void grow(char input) {
@@ -75,7 +74,6 @@ public class Snake {
             default:
                 break;
             }
-            body.remove(1);
-            body.add(1,new SnakeBodyCell(x, y));
+            body.set(1, new SnakeBodyCell(x, y));
     }
 }

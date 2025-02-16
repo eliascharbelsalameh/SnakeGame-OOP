@@ -26,8 +26,8 @@ public class Game {
     }
 
     public Game(Map map, Snake snake) {
-        this.nbOfFood = map.getHeight() * map.getWidth() / 10;
-        this.nbOfObstacles = map.getHeight() * map.getWidth() / 10;
+        this.nbOfFood = 2 * map.getHeight() * map.getWidth() / map.getWidth();
+        this.nbOfObstacles = 2 * map.getHeight() * map.getWidth() / map.getWidth();
         this.map = map;
         this.snake = snake;
         this.activeItems = new ArrayList<>();
@@ -116,9 +116,10 @@ public class Game {
                         for (Cell cell : activeItems) {
                             if (cell_tmp.checkOverlap(cell)) {
                                 if (cell.getClass() == Food.class) {
-                                    System.out.println("The snake ate the food!");
-                                    snake.grow(input); // if snake eats food, grow
-                                    activeItems.remove(cell);
+                                    nbOfFood--;
+                                    System.out.println("The snake ate the food!"); 
+                                    snake.grow(input); // if snake eats food, grow 
+                                    
                                     map.setCell(new SnakeHead(cell.getX(), cell.getY()));
                                     map.setCell(new SnakeBodyCell(
                                         snake.getBody().get(1).getX(),
@@ -130,6 +131,7 @@ public class Game {
                                 }
                             }
                         }
+                        activeItems.remove(cell_tmp);
                     }
     }
 
@@ -142,18 +144,18 @@ public class Game {
     }
 
     public void handleInput() {
-        Scanner scanner = new Scanner(System.in);
-        do {
+        do { // TODO: NoSuchElementException
+            input = ' ';
+            Scanner scanner = new Scanner(System.in);
             System.out.print("Enter direction (WASD): ");
             if (scanner.hasNext()) {
                 input = scanner.next().charAt(0);
             } else {
+                scanner.close();
                 System.out.println("No input provided!");
             }
         } while (input != Direction.UP && input != Direction.DOWN && input != Direction.LEFT && input != Direction.RIGHT);
         setInput(input);
-        scanner.close();
-        }
-        
+        }        
     }
 
