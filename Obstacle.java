@@ -9,7 +9,7 @@ public class Obstacle extends Cell{
     
     @Override
     public String toString() {
-        return "O";
+        return "\u001B[31mO\u001B[0m";
     }
     
 }

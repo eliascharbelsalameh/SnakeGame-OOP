@@ -9,7 +9,7 @@ public class SnakeBodyCell extends Cell{
     
     @Override
     public String toString() {
-        return "s";
+        return "\u001B[32m" + "s" + "\u001B[0m";
     }
     
 }

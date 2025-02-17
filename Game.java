@@ -26,8 +26,8 @@ public class Game {
     }
 
     public Game(Map map, Snake snake) {
-        this.nbOfFood = 2 * map.getHeight() * map.getWidth() / map.getWidth();
-        this.nbOfObstacles = 2 * map.getHeight() * map.getWidth() / map.getWidth();
+        this.nbOfFood = 2 * map.getHeight() * map.getWidth() / map.getWidth()+map.getHeight();
+        this.nbOfObstacles = 2 * map.getHeight() * map.getWidth() / map.getWidth()+map.getHeight();
         this.map = map;
         this.snake = snake;
         this.activeItems = new ArrayList<>();
@@ -37,7 +37,7 @@ public class Game {
             do {
                 x = (int) (Math.random() * map.getWidth());
                 y = (int) (Math.random() * map.getHeight());
-            } while (map.cellNotEmpty(x, y));
+            } while ( x > map.getWidth()-1 || y >map.getHeight()-1 || map.cellNotEmpty(x, y));
             
             if (i < nbOfFood) {
                 cell = new Food(x, y);

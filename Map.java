@@ -3,13 +3,13 @@ public class Map {
     private final int width;
     private final Cell[][] grid;
     
-    public Map(int height, int width) {
+    public Map(int width, int height) {
         this.width = width;
         this.height = height;
-        grid = new Cell[height][width];
+        grid = new Cell[width][height];
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                grid[i][j] = new EmptyCell(i, j);
+                grid[j][i] = new EmptyCell(i, j);
             }
         }
     }
@@ -46,7 +46,7 @@ public class Map {
             }
             System.out.println();
             for (int j = 0; j < width; j++) {
-                System.out.print("| " + grid[i][j] + " |");
+                System.out.print("| " + grid[j][i] + " |");
             }
             System.out.println();
         }
