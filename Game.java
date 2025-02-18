@@ -26,8 +26,8 @@ public class Game {
     }
 
     public Game(Map map, Snake snake) {
-        this.nbOfFood = 2 * map.getHeight() * map.getWidth() / map.getWidth()+map.getHeight();
-        this.nbOfObstacles = 2 * map.getHeight() * map.getWidth() / map.getWidth()+map.getHeight();
+        this.nbOfFood = 4 * map.getHeight() * map.getWidth() / (map.getWidth()+map.getHeight());
+        this.nbOfObstacles = 4 * map.getHeight() * map.getWidth() / (map.getWidth()+map.getHeight());
         this.map = map;
         this.snake = snake;
         this.activeItems = new ArrayList<>();
