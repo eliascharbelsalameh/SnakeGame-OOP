@@ -144,12 +144,13 @@ public class Game {
     }
 
     public void handleInput() {
-        do { // TODO: NoSuchElementException
+        do {
             input = ' ';
             Scanner scanner = new Scanner(System.in);
             System.out.print("Enter direction (WASD): ");
             if (scanner.hasNext()) {
                 input = scanner.next().charAt(0);
+                input = Character.toUpperCase(input);
             } else {
                 scanner.close();
                 System.out.println("No input provided!");

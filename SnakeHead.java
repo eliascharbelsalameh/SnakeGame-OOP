@@ -11,6 +11,6 @@ public class SnakeHead extends Cell{
 
     @Override
     public String toString() {
-        return "\u001B[32mS\u001B[0m"; // ANSI escape code for green color
-    } // ANSI escape code for red color }
+        return "\u001B[33mS\u001B[0m";
+    }
 }

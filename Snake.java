@@ -48,7 +48,6 @@ public class Snake {
             default:
                 break;
             }
-          
             body.set(1, new SnakeBodyCell(x, y));
             body.remove(body.size() - 1);
     }
