@@ -55,6 +55,10 @@ public class Game {
         while (isOver == "continue") {
             handleInput();
             checkCollision(input);
+            if (noFoodLeft()) {
+                System.out.println(map.toString()+"\n\nNo more food left!");
+                endGame(true);
+            }
             if (isOver == "lose") {
                 System.out.println("Game Over!");
                 break;
@@ -64,6 +68,7 @@ public class Game {
                 break;
             }
             System.out.println(map.toString());
+            
         }
         System.out.println("Let's start of a new game!");
     }
@@ -82,7 +87,7 @@ public class Game {
         }
         Cell cell_tmp = new SnakeHead(x_tmp, y_tmp); // temporary cell to check potential collision
 
-        if (nbOfFood == 0) {
+        if (noFoodLeft()) {
             System.out.println("No more food left!");
             endGame(true); // if no food left, end game
         }
@@ -103,14 +108,14 @@ public class Game {
         }
         else if(map.getCellType(x_tmp, y_tmp).equals(EmptyCell.class.getName())){
             System.out.println("The snake is moving to an empty cell.");
-                        snake.move(input); // if snake moves to empty cell, move
-                        map.setCell(new SnakeHead(x_tmp, y_tmp));
-                        map.setCell(new SnakeBodyCell(
-                                        snake.getBody().get(1).getX(),
-                                        snake.getBody().get(1).getY()
-                                        ));
-                        map.setCell(new EmptyCell(snake.getBody().get(snake.getBody().size() - 1).getX(),
-                                                    snake.getBody().get(snake.getBody().size() - 1).getY()));
+            map.setCell(new SnakeHead(x_tmp, y_tmp));
+            map.setCell(new SnakeBodyCell(
+                snake.getBody().get(0).getX(),
+                snake.getBody().get(0).getY()
+                ));
+                map.setCell(new EmptyCell(snake.getBody().get(snake.getBody().size() - 1).getX(),
+                                snake.getBody().get(snake.getBody().size() - 1).getY()));
+                snake.move(input); // if snake moves to empty cell, move
                     } 
                     else {
                         for (Cell cell : activeItems) {
@@ -141,6 +146,10 @@ public class Game {
         } else {
             setIsOver("lose");
         }
+    }
+
+    public boolean noFoodLeft() {
+        return nbOfFood == 0;
     }
 
     public void handleInput() {
