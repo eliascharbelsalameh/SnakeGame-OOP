@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class Game {
     private int nbOfFood;
-    private int nbOfObstacles;
-    private Map map;
-    private Snake snake;
-    private ArrayList<Cell> activeItems;
+    private final int nbOfObstacles;
+    private final Map map;
+    private final Snake snake;
+    private final ArrayList<Cell> activeItems;
     private char input;
     private String isOver;
 
@@ -52,18 +52,18 @@ public class Game {
     public void play() {
         setIsOver("continue");
         System.out.println(map.toString());
-        while (isOver == "continue") {
+        while (isOver.equals("continue")) {
             handleInput();
             checkCollision(input);
             if (noFoodLeft()) {
                 System.out.println(map.toString()+"\n\nNo more food left!");
                 endGame(true);
             }
-            if (isOver == "lose") {
+            if (isOver.equals("lose")) {
                 System.out.println("Game Over!");
                 break;
             }
-            else if (isOver == "win") {
+            else if (isOver.equals("win")) {
                 System.out.println("You Win!");
                 break;
             }
@@ -102,7 +102,7 @@ public class Game {
                         System.out.println("Wrong direction! The Snake ate its head.");
                         endGame(false); // if snake hits itself, end game
                         } 
-        else if (map.getCellType(x_tmp, y_tmp) == SnakeBodyCell.class.getName()) {
+        else if (map.getCellType(x_tmp, y_tmp).equals(SnakeBodyCell.class.getName())) {
             System.out.println("Wrong direction! The Snake ate its body.");
             endGame(false); // if snake hits itself, end game
         }
