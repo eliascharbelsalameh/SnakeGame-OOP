@@ -6,12 +6,11 @@ This is a console-based implementation of the classic **Snake Game** in Java. Th
 
 ## Features
 
-- **Dynamic Game Map:** A customizable grid that hosts the game.
-- **Snake Mechanics:** A snake that moves across the map, grows upon consuming food, and ends the game on collision.
-- **Interactive Gameplay:** Players control the snake using keyboard inputs.
-- **Game Items:** Includes food (`F`), obstacles (`O`), and empty cells (` `).
-- **Collision Logic:** Detects interactions between the snake and other items.
-- **Win/Loss States:** The game ends with either a win or a loss message.
+- **Dynamic Game Map:** A customizable grid-based environment.
+- **Snake Mechanics:** The snake moves, grows when eating food, and loses upon collision.
+- **Interactive Gameplay:** Players can control the snake using keyboard inputs (`WASD`).
+- **Collision Detection:** The game detects interactions between the snake and food, obstacles, or itself.
+- **Win/Loss Conditions:** The game ends when the snake consumes all food (win) or collides with an obstacle or itself (loss).
 
 ---
 
@@ -19,7 +18,7 @@ This is a console-based implementation of the classic **Snake Game** in Java. Th
 
 ### Core Classes
 1. **`Cell` (Abstract Class):**  
-   Represents a generic grid cell with x, y coordinates and overlap checking.
+   Represents a generic pair of coordinates with x, y coordinates and overlap checking.
    - Subclasses: `EmptyCell`, `Food`, `Obstacle`, `SnakeHead`, `SnakeBodyCell`.
 
 2. **`EmptyCell`:**  
@@ -38,16 +37,24 @@ This is a console-based implementation of the classic **Snake Game** in Java. Th
 
 ### Gameplay Classes
 1. **`Map`:**  
-   Represents the game grid with methods to manage cells, check occupancy, and display the current map state.
+   Represents the game grid with:
+   - **Dynamic Grid Generation:** Initializes an empty grid of dimensions (height, width).
+   - **Cell Manipulation:** Allows setting and retrieving grid cells.
+   - **Game Display:** Prints the map with updated snake positions based on the updated (override) toString() function.
 
 2. **`Snake`:**  
-   Handles the snake's body, direction, and movement.
+   - **Controls Movement:** Moves in four directions (`UP`, `DOWN`, `LEFT`, `RIGHT`).
+   - **Grows on Eating Food:** Expands when consuming `F`.
+   - **Detects Self-Collision:** Ends game if it collides with its own body.
 
 3. **`Game`:**  
-   Manages the gameplay, including item placement, collision handling, and game states.
+   - **Handles Player Input:** Uses `Scanner` to read `WASD` commands.
+   - **Checks Collisions:** Detects interactions between snake and obstacles, food, or boundaries.
+   - **Manages Game Flow:** Starts, updates, and terminates the game based on win/loss conditions.
 
-4. **`driver`:**  
-   The entry point for the application. Currently contains placeholder code for testing.
+4. **`Driver`:**  
+   - **Initializes Game Objects:** Sets up the `Map`, `Snake`, and `Game`.
+   - **Starts the Game:** Calls `game.play()` to begin the gameplay loop.
 
 ---
 
@@ -58,42 +65,46 @@ This is a console-based implementation of the classic **Snake Game** in Java. Th
    - A terminal or IDE to run the program.
 
 2. **Steps:**
-   - Compile all the Java files:
+   - Compile all Java files:
      ```bash
      javac *.java
      ```
-   - Run the `driver` class:
+   - Run the `Driver` class:
      ```bash
-     java driver
+     java Driver.java
      ```
 
 ---
 
 ## How to Play
 
-- Use the keyboard to control the snake's movement (input integration in progress).
+- Use **WASD** keys to control the snake:
+  - `W` - Move Up
+  - `A` - Move Left
+  - `S` - Move Down
+  - `D` - Move Right
 - Consume food (`F`) to grow.
-- Avoid obstacles (`O`) and collisions with the snake's body.
+- Avoid obstacles (`O`) and self-collision.
 - The game ends when:
-  - The snake consumes all food items (win condition).
-  - The snake collides with itself or an obstacle (loss condition).
+  - The snake consumes all food (`You Win!`).
+  - The snake collides with itself or an obstacle (`Game Over!`).
 
 ---
 
 ## Future Enhancements
 
-- Implement snake growth logic.
-- Enable keyboard-based directional input.
-- Add a scoring system.
-- Enhance collision and boundary checks.
-- Add graphical user interface (GUI) for better visualization.
+- Add a graphical user interface (GUI) for a better visual experience.
+- Improve input validation for smoother gameplay.
+- Implement a score tracking system.
+- Enhance collision detection.
+- Add exception handling.
 
 ---
 
 ## Project Files
 
 - **Core Classes:**
-  - [`Cell.java`](Cell.java) - Base class for all grid cells.
+  - [`Cell.java`](Cell.java) - Base abstract class for all cells.
   - [`EmptyCell.java`](EmptyCell.java) - Represents an empty cell.
   - [`Food.java`](Food.java) - Represents food cells.
   - [`Obstacle.java`](Obstacle.java) - Represents obstacle cells.
@@ -101,20 +112,20 @@ This is a console-based implementation of the classic **Snake Game** in Java. Th
   - [`SnakeBodyCell.java`](SnakeBodyCell.java) - Represents the snake's body.
 
 - **Gameplay Classes:**
-  - [`Game.java`](Game.java) - Core gameplay logic.
-  - [`Map.java`](Map.java) - Game grid implementation.
-  - [`Snake.java`](Snake.java) - Handles snake mechanics.
+  - [`Game.java`](Game.java) - Manages gameplay and game states.
+  - [`Map.java`](Map.java) - Handles grid initialization and rendering.
+  - [`Snake.java`](Snake.java) - Implements snake movement and growth.
 
 - **Driver:**
-  - [`driver.java`](driver.java) - The entry point of the application.
+  - [`Driver.java`](Driver.java) - Initializes and starts the game.
 
 ---
 
 ## Authors
 
-Developed as part of an educational or personal project.
-- Madeleine FARAH
-- Maher HALABI
-- Elias-Charbel SALANEH
+Developed as part of an educational project in the Object Oriented Analysis and Design class at the Holy Spirit University of Kaslik - USEK - in Lebanon.
+- **Madeleine Farah**
+- **Maher Halabi**
+- **Elias-Charbel Salameh**
 
 Feel free to contribute or modify the game as needed!
