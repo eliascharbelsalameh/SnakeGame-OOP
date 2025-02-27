@@ -15,7 +15,5 @@ public class Driver {
         Game game = new Game(map, snake);
         game.play();
 
-        // TODO: add exception handling
-
     }
 }
